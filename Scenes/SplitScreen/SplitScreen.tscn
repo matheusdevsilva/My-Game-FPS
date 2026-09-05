@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://xsvx862hbkn2"]
+
+[ext_resource type="Script" uid="uid://c26a05y6tq4oi" path="res://Scenes/SplitScreen/SplitScreen.gd" id="1_mmd2q"]
+
+[node name="SplitScreen" type="Control" unique_id=1457053704]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mmd2q")
+
+[node name="Player1Viewport" type="SubViewportContainer" parent="." unique_id=1688278033]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="Player1Viewport" unique_id=1880247206]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Player2Viewport" type="SubViewportContainer" parent="." unique_id=1996684080]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="Player2Viewport" unique_id=1723469593]
+handle_input_locally = false
+render_target_update_mode = 4

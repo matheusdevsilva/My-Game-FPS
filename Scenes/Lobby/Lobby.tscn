@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ddqq46xnfefxv"]
+
+[ext_resource type="PackedScene" uid="uid://h5bqxwxjmkm0" path="res://Player/Player.tscn" id="1_a15b7"]
+[ext_resource type="Script" uid="uid://0uj6nr3ww41f" path="res://Scenes/Lobby/lobby.gd" id="1_t6nvb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bs55j"]
+size = Vector2(50, 50)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r02bc"]
+points = PackedVector3Array(-25, 0, -25, -25, 0, 25, 25, 0, -25, 25, 0, 25)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a15b7"]
+
+[sub_resource type="Sky" id="Sky_2700o"]
+sky_material = SubResource("ProceduralSkyMaterial_a15b7")
+
+[sub_resource type="Environment" id="Environment_bs55j"]
+background_mode = 2
+sky = SubResource("Sky_2700o")
+
+[node name="Lobby" type="Node3D" unique_id=267388963]
+script = ExtResource("1_t6nvb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=623429689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25064158, 0)
+mesh = SubResource("PlaneMesh_bs55j")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=622530900]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=2115413030]
+shape = SubResource("ConvexPolygonShape3D_r02bc")
+
+[node name="Player" parent="." unique_id=1569491856 instance=ExtResource("1_a15b7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2735958, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2075639924]
+environment = SubResource("Environment_bs55j")
