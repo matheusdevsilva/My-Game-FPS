@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://h5bqxwxjmkm0"]
 
-[ext_resource type="Script" uid="uid://2uvt2rhffw4x" path="res://Player/Script/Player.gd" id="1_3qydi"]
+[ext_resource type="Script" uid="uid://2uvt2rhffw4x" path="res://Player/Scripts/Player.gd" id="1_3qydi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bs55j"]
 
@@ -13,6 +13,13 @@ script = ExtResource("1_3qydi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5849461, -0.32582605)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1095246599]
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraPivot/Camera3D" unique_id=1262047407]
+target_position = Vector3(0, 0, -5)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot" unique_id=1917123279]
+light_energy = 2.267
+spot_range = 5.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=46041148]
 shape = SubResource("CapsuleShape3D_bs55j")
