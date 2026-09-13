@@ -1,5 +1,5 @@
 extends Node3D
 
-func interact(object):
+func interact():
 	print("interagindo")
 	SteamManage.invite_friends()

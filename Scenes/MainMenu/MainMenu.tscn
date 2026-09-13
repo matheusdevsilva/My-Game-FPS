@@ -31,5 +31,10 @@ text = "Solo"
 layout_mode = 2
 text = "Multiplayer"
 
+[node name="ButtonSettings" type="Button" parent="VBoxContainer" unique_id=170243816]
+layout_mode = 2
+text = "Settings"
+
 [connection signal="pressed" from="VBoxContainer/ButtonSingle" to="." method="_on_button_single_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonMultiplayer" to="." method="_on_button_multiplayer_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]

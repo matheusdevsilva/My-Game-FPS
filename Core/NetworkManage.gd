@@ -1,8 +1,6 @@
 extends Node
 
-signal  player_connection
-
-
+signal player_connection
 
 var enet:ENetMultiplayerPeer
   

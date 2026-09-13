@@ -2,7 +2,6 @@ extends Node
 
 signal change_scene_finish
 
-
 enum name_scenes {
 	PLAYER,
 	LOBBY,
@@ -30,7 +29,6 @@ func _on_scene_changed() -> void:
 	current_scene = get_tree().current_scene
 	change_scene_finish.emit()
 
-	
 ## Instancia uma cena.
 func instantiate_scene(scene: name_scenes) -> Node:
 	if not scenes.has(scene):
@@ -66,4 +64,10 @@ func move_node_in_scene(node: Node, new_parent: Node) -> void:
 	
 func _on_player_steam_ready(player: Player) -> void:
 	add_node_in_scene(player, current_scene)
+
+func play_singleplayer()->void:
+	change_scene(GameManage.name_scenes.LOBBY)
+	await change_scene_finish
+	add_node_in_scene(instantiate_scene(name_scenes.PLAYER),current_scene)
+	
 	

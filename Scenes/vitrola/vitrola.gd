@@ -22,8 +22,6 @@ func play_song(index: int) -> void:
 
 func _on_song_finished() -> void:
 	current_song += 1
-
 	if current_song >= ost.size():
 		current_song = 0
-
 	play_song(current_song)

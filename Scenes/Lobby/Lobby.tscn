@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://ddqq46xnfefxv"]
 
-[ext_resource type="Script" uid="uid://0uj6nr3ww41f" path="res://Scenes/Lobby/lobby.gd" id="1_t6nvb"]
 [ext_resource type="Material" uid="uid://c6eob3m5av0d2" path="res://Scenes/Models/Tiles/Xadrez/Tiles074_8K-JPG.tres" id="2_ptqqe"]
 [ext_resource type="Sky" uid="uid://dphntr8l5fgja" path="res://Scenes/Sky/DaySkyHDRI001B_4K.tres" id="4_ptqqe"]
 [ext_resource type="PackedScene" uid="uid://btropoahs5fsf" path="res://Scenes/vitrola/vitrola.glb" id="5_kye7n"]
 [ext_resource type="AudioStream" uid="uid://bmgm1imt2j0he" path="res://Scenes/vitrola/4. Glacier.mp3" id="6_dy3e7"]
 [ext_resource type="Script" uid="uid://dmot8647l021x" path="res://Scenes/vitrola/vitrola.gd" id="6_qy7bc"]
 [ext_resource type="PackedScene" uid="uid://b75gmnoh824wq" path="res://Scenes/BoxSteamInvite/BoxSteamInvite.tscn" id="7_qy7bc"]
+
+[sub_resource type="GDScript" id="GDScript_dy3e7"]
+script/source = "extends Node3D
+"
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bs55j"]
 size = Vector2(100, 100)
@@ -50,7 +53,7 @@ material = SubResource("StandardMaterial3D_4hucq")
 size = Vector3(9.213867, 4.084961, 0.5194092)
 
 [node name="Lobby" type="Node3D" unique_id=267388963]
-script = ExtResource("1_t6nvb")
+script = SubResource("GDScript_dy3e7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=623429689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25064158, 0)

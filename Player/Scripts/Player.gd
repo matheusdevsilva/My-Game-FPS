@@ -34,6 +34,7 @@ class_name Player
 @export var tilt_speed := 6
 @export var steam_id:int
 @export var username_steam:String = ""
+@export var avatar_steam:Texture2D
 
 
 var jump_time := 0.0
@@ -193,7 +194,7 @@ func handle_raycast():
 	while node:
 		if node.has_method("interact"):
 			if Input.is_action_just_pressed("interact"):
-				node.interact(self)
+				node.interact()
 			return
 		node = node.get_parent()
 				
