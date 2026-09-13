@@ -32,3 +32,11 @@ text = "Continue"
 [node name="ButtonInviteFriends" type="Button" parent="VBoxContainer" unique_id=1258508497]
 layout_mode = 2
 text = "Invite Friends"
+
+[node name="ButtonQuit" type="Button" parent="VBoxContainer" unique_id=1775314877]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonInviteFriends" to="." method="_on_button_invite_friends_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

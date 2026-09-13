@@ -4,11 +4,13 @@ signal change_scene_finish
 
 enum name_scenes {
 	PLAYER,
+	MAIN_MENU,
 	LOBBY,
 	SPLITSCREEN
 }
 var scenes: Dictionary[name_scenes, PackedScene] = {
 	name_scenes.PLAYER: preload("res://Player/Player.tscn"),
+	name_scenes.MAIN_MENU: preload("res://Scenes/MainMenu/MainMenu.tscn"),
 	name_scenes.LOBBY:preload("res://Scenes/Lobby/Lobby.tscn"),
 	name_scenes.SPLITSCREEN:preload("res://Scenes/SplitScreen/SplitScreen.tscn")
 }

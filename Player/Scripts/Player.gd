@@ -1,63 +1,62 @@
 extends CharacterBody3D
 class_name Player
 
-@export var speed := 6.0
-@export var run_speed := 8.5
-@export var accel := 12.0
+@export var speed:float= 6.0
+@export var run_speed:float = 8.5
+@export var accel:float = 12.0
 
-@export var mouse_sens := 0.002
-@export var jump_force := 4.5
-@export var jump_hold_time := 0.2
-@export var jump_cut_multiplier := 0.5
-@export var jump_sprint_multiplier := 1.1
+@export var mouse_sens:float = 0.002
+@export var jump_force:float = 4.5
+@export var jump_hold_time:float = 0.2
+@export var jump_cut_multiplier:float = 0.5
+@export var jump_sprint_multiplier:float = 1.1
 @export var air_control := 0.
 
-@export var stand_height := 1.8
-@export var crouch_height := 0.9
-@export var stand_camera_y := 0.0
-@export var crouch_camera_y := -0.6
+@export var stand_height:float = 1.8
+@export var crouch_height:float = 0.9
+@export var stand_camera_y:float = 0.0
+@export var crouch_camera_y:float = -0.6
 
-@export var jump_kick_strength := 0.15
-@export var land_kick_strength := 0.25
+@export var jump_kick_strength:float = 0.15
+@export var land_kick_strength:float = 0.25
 @export var cam_return_speed := 8.
 
-@export var stamina_max := 100.0
-@export var stamina_recovery := 10.0
-@export var stamina_drain := 10.0
-@export var stamina_recover_limit := 50.0
+@export var stamina_max:float = 100.0
+@export var stamina_recovery:float = 10.0
+@export var stamina_drain:float = 10.0
+@export var stamina_recover_limit:float = 50.0
 
-@export var base_fov := 75.0
-@export var run_fov := 95.0
-@export var fov_speed := 8.0
+@export var base_fov:float = 75.0
+@export var run_fov:float = 95.0
+@export var fov_speed:float = 8.0
 
-@export var tilt_amount := 0.08
-@export var tilt_speed := 6
+@export var tilt_amount:float = 0.08
+@export var tilt_speed:int= 6
 @export var steam_id:int
 @export var username_steam:String = ""
 @export var avatar_steam:Texture2D
 
 
-var jump_time := 0.0
-var stamina := 100.0
-var current_speed := 0.0
+var jump_time:float= 0.0
+var stamina:float = 100.0
+var current_speed:float = 0.0
 
-var exhausted:= false
-var is_running:bool= false
-var is_crouching :bool = false
-var is_jumping := false
+var exhausted:bool = false
+var is_running:bool = false
+var is_crouching:bool = false
+var is_jumping: = false
 var can_move:bool = true
 var can_open_menu:bool = true
-var look_back:bool= false
+var look_back:bool = false
 
-
-var current_menu: Control = null
-var cam_impact := 0.0
-var was_on_floor := true
-var bob_time := 0.0
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var cam_impact :float= 0.0
+var was_on_floor :bool = true
+var bob_time :float= 0.0
+var gravity:Variant = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var player_inventory:PlayerInventory
 var player_hud:PlayerHUD
+var current_menu: Control = null
 
 @onready var pivot:Node3D = $CameraPivot
 @onready var collision:CollisionShape3D = $CollisionShape3D
@@ -65,6 +64,9 @@ var player_hud:PlayerHUD
 @onready var ray:RayCast3D = $CameraPivot/Camera3D/RayCast3D
 @onready var flashlight:SpotLight3D = $CameraPivot/SpotLight3D
 @onready var label_username:Label3D  = $Username
+@onready var hand:Node3D = $CameraPivot/Hand
+@onready var audio_listener:AudioListener3D = $CameraPivot/Camera3D/AudioListener3D
+@onready var audio_stream_player:AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 func _ready():
 	stamina = stamina_max
