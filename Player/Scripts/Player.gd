@@ -32,8 +32,8 @@ class_name Player
 
 @export var tilt_amount := 0.08
 @export var tilt_speed := 6
-@export var steam_id = ""
-@export var username_steam = ""
+@export var steam_id:int
+@export var username_steam:String = ""
 
 
 var jump_time := 0.0
@@ -63,8 +63,6 @@ var player_hud:PlayerHUD
 @onready var camera:Camera3D = $CameraPivot/Camera3D
 @onready var ray:RayCast3D = $CameraPivot/Camera3D/RayCast3D
 @onready var flashlight:SpotLight3D = $CameraPivot/SpotLight3D
-
-
 
 
 func _ready():

@@ -1,5 +1,8 @@
 extends Node
 
+signal change_scene_finish
+
+
 enum name_scenes {
 	PLAYER,
 	LOBBY,
@@ -14,17 +17,19 @@ var split_screen: SplitScreen
 var current_scene:Node 
 
 func _ready() -> void:
-	split_screen = instantiate_scene(name_scenes.SPLITSCREEN) as SplitScreen
+	get_tree().scene_changed.connect(_on_scene_changed)
+	SteamManage.player_steam_ready.connect(_on_player_steam_ready)
+	
 
+func change_scene(scene: name_scenes) -> void:
+	if not scenes.has(scene):
+		return
+	get_tree().change_scene_to_packed(scenes[scene])
+	
+func _on_scene_changed() -> void:
+	current_scene = get_tree().current_scene
+	change_scene_finish.emit()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("toggle_split_screen"):
-		toggle_split_screen()
-
-func toggle_split_screen() -> void:
-	add_node_in_scene(split_screen,GameManage.current_scene)
-	print("ativando")
-	split_screen.visible = not split_screen.visible
 	
 ## Instancia uma cena.
 func instantiate_scene(scene: name_scenes) -> Node:
@@ -58,3 +63,7 @@ func move_node_in_scene(node: Node, new_parent: Node) -> void:
 	if old_parent:
 		old_parent.remove_child(node)
 	new_parent.add_child(node)
+	
+func _on_player_steam_ready(player: Player) -> void:
+	add_node_in_scene(player, current_scene)
+	
