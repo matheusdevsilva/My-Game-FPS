@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b75gmnoh824wq"]
+
+[ext_resource type="Script" uid="uid://d1nl3fdvxxll5" path="res://Scenes/BoxSteamInvite/box_steam_invite.gd" id="1_nvrq8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bov22"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nvrq8"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="BoxSteamInvite" type="Node3D" unique_id=1350615487]
+script = ExtResource("1_nvrq8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=666846827]
+mesh = SubResource("BoxMesh_bov22")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=289961085]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1064828967]
+shape = SubResource("ConvexPolygonShape3D_nvrq8")

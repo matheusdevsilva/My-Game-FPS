@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btropoahs5fsf" path="res://Scenes/vitrola/vitrola.glb" id="5_kye7n"]
 [ext_resource type="AudioStream" uid="uid://bmgm1imt2j0he" path="res://Scenes/vitrola/4. Glacier.mp3" id="6_dy3e7"]
 [ext_resource type="Script" uid="uid://dmot8647l021x" path="res://Scenes/vitrola/vitrola.gd" id="6_qy7bc"]
+[ext_resource type="PackedScene" uid="uid://b75gmnoh824wq" path="res://Scenes/BoxSteamInvite/BoxSteamInvite.tscn" id="7_qy7bc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bs55j"]
 size = Vector2(100, 100)
@@ -78,3 +79,6 @@ stream = ExtResource("6_dy3e7")
 attenuation_model = 2
 autoplay = true
 playback_type = 1
+
+[node name="BoxSteamInvite" parent="." unique_id=1350615487 instance=ExtResource("7_qy7bc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.397046, 0.39235508, 0)

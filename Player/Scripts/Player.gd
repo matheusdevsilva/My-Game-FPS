@@ -63,11 +63,13 @@ var player_hud:PlayerHUD
 @onready var camera:Camera3D = $CameraPivot/Camera3D
 @onready var ray:RayCast3D = $CameraPivot/Camera3D/RayCast3D
 @onready var flashlight:SpotLight3D = $CameraPivot/SpotLight3D
-
+@onready var label_username:Label3D  = $Username
 
 func _ready():
 	stamina = stamina_max
+	label_username.text = username_steam
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 
 func _input(event):
 	if event is InputEventMouseMotion:
