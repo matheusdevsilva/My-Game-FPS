@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dj16gto762xc3"]
 
-[ext_resource type="Script" uid="uid://d1mt5e1wsf2bl" path="res://Player/UI/MenuPlayer.gd" id="1_0iu74"]
+[ext_resource type="Script" uid="uid://d1mt5e1wsf2bl" path="res://Player/Scripts/PlayerMenu.gd" id="1_0iu74"]
 
 [node name="Menu" type="Control" unique_id=254163232]
 layout_mode = 3
@@ -14,14 +14,14 @@ script = ExtResource("1_0iu74")
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1338758540]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.49
-anchor_top = 0.48100004
-anchor_right = 0.51000005
-anchor_bottom = 0.51900005
-offset_left = -0.8000488
-offset_top = 0.5199585
-offset_right = 0.79992676
-offset_bottom = -0.52008057
+anchor_left = 0.47100002
+anchor_top = 0.437
+anchor_right = 0.52900004
+anchor_bottom = 0.563
+offset_left = 35.679993
+offset_top = 48.039978
+offset_right = -35.680054
+offset_bottom = -48.04004
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -33,10 +33,15 @@ text = "Continue"
 layout_mode = 2
 text = "Invite Friends"
 
+[node name="ButtonSettings" type="Button" parent="VBoxContainer" unique_id=490255133]
+layout_mode = 2
+text = "Settings"
+
 [node name="ButtonQuit" type="Button" parent="VBoxContainer" unique_id=1775314877]
 layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonInviteFriends" to="." method="_on_button_invite_friends_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

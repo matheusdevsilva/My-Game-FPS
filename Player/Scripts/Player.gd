@@ -81,6 +81,8 @@ func _input(event):
 		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	if  Input.is_action_just_pressed("flashlight"):
 		flashlight.visible = !flashlight.visible
+	if Input.is_action_just_pressed("ui_cancel"):
+		GameManage.open_menu(GameManage.NameMenu.MENU_PLAYER)
 	
 func update_stamina(delta: float, direction: Vector3) -> void:
 	if stamina <= 0:

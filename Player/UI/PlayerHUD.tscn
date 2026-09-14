@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dqonwrda76k7"]
+
+[ext_resource type="Script" uid="uid://dwlswuccnn0u7" path="res://Player/Scripts/PlayerHUD.gd" id="1_p1lod"]
+
+[node name="PlayerHud" type="Control" unique_id=1485824767]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_p1lod")

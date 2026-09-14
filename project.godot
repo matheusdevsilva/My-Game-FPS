@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 
 GameManage="*uid://7sytmwbt2run"
 SteamManage="*uid://dq865sq84cmk1"
+NetworkManage="*uid://c4vsx2xbnauqa"
 
 [display]
 
