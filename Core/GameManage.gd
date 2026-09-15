@@ -1,6 +1,10 @@
 extends Node
 
 signal change_scene_finish
+
+signal menu_opened(menu: NameMenu)
+signal menu_closed(menu: NameMenu)
+
 ## Enum de nomes da cenas
 enum NameScene {
 	PLAYER,
@@ -24,7 +28,6 @@ const MENUS: Dictionary[NameMenu, PackedScene] = {
 	NameMenu.MENU_PLAYER: preload("res://Player/UI/PlayerMenu.tscn"),
 	NameMenu.HUD_PLAYER: preload("res://Player/UI/PlayerHUD.tscn"),
 }
-
 
 var current_scene:Node 
 var current_menu:Control
@@ -106,11 +109,14 @@ func open_menu(menu: NameMenu) -> void:
 	current_menu_id = menu
 	add_node_in_scene(current_menu, current_scene)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	menu_opened.emit(menu)
 
 func close_menu() -> void:
 	if not is_instance_valid(current_menu):
 		current_menu = null
 		return
+	var closed_menu := current_menu_id
 	current_menu.queue_free()
 	current_menu = null
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	menu_closed.emit(closed_menu)

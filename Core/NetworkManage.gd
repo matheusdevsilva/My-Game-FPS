@@ -3,6 +3,7 @@ extends Node
 signal multiplayer_finished
 
 func _ready() -> void:
+	
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 func _on_server_disconnected() -> void:

@@ -52,7 +52,9 @@ var look_back:bool = false
 var cam_impact :float= 0.0
 var was_on_floor :bool = true
 var bob_time :float= 0.0
+
 var gravity:Variant = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 
 var player_inventory:PlayerInventory
 var player_hud:PlayerHUD
@@ -62,27 +64,34 @@ var current_menu: Control = null
 @onready var collision:CollisionShape3D = $CollisionShape3D
 @onready var camera:Camera3D = $CameraPivot/Camera3D
 @onready var ray:RayCast3D = $CameraPivot/Camera3D/RayCast3D
-@onready var flashlight:SpotLight3D = $CameraPivot/SpotLight3D
+@onready var flashlight:SpotLight3D = $CameraPivot/Flashlight
+@onready var audio_flashlight:AudioStreamPlayer3D = $CameraPivot/Flashlight/SoundFlashlight
 @onready var label_username:Label3D  = $Username
-@onready var hand:Node3D = $CameraPivot/Hand
+@onready var hand:Node3D = $Hand
 @onready var audio_listener:AudioListener3D = $CameraPivot/Camera3D/AudioListener3D
 @onready var audio_stream_player:AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 
 func _ready():
 	stamina = stamina_max
 	label_username.text = username_steam
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
+	GameManage.menu_opened.connect(_on_menu_opened)
+	GameManage.menu_closed.connect(_on_menu_closed)
 
-func _input(event):
+		
+
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sens)
 		pivot.rotation.x -= event.relative.y * mouse_sens
 		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-	if  Input.is_action_just_pressed("flashlight"):
-		flashlight.visible = !flashlight.visible
-	if Input.is_action_just_pressed("ui_cancel"):
+	if event.is_action_pressed("flashlight"):
+		toggle_flashlight()
+		
+	if event.is_action_pressed("ui_cancel"):
 		GameManage.open_menu(GameManage.NameMenu.MENU_PLAYER)
+		
 	
 func update_stamina(delta: float, direction: Vector3) -> void:
 	if stamina <= 0:
@@ -227,6 +236,14 @@ func handle_ground(delta):
 			stand_height,
 			10.0 * delta
 		)
+		
+func toggle_flashlight() -> void:
+	flashlight.visible = not flashlight.visible
+	audio_flashlight.play()
+	
+## callback para abrir e fechar menu e parar a movimentaçao do player
+func _on_menu_opened(_menu: GameManage.NameMenu) -> void:
+	can_move = false
 
-	
-	
+func _on_menu_closed(_menu: GameManage.NameMenu) -> void:
+	can_move = true
