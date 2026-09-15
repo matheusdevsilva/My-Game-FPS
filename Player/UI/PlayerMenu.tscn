@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dj16gto762xc3"]
+
+[ext_resource type="Script" uid="uid://d1mt5e1wsf2bl" path="res://Player/Scripts/PlayerMenu.gd" id="1_0iu74"]
+
+[node name="Menu" type="Control" unique_id=254163232]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0iu74")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1338758540]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.47100002
+anchor_top = 0.437
+anchor_right = 0.52900004
+anchor_bottom = 0.563
+offset_left = 35.679993
+offset_top = 48.039978
+offset_right = -35.680054
+offset_bottom = -48.04004
+grow_horizontal = 2
+grow_vertical = 2
+accessibility_region = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonContinue" type="Button" parent="VBoxContainer" unique_id=1192729882]
+layout_mode = 2
+text = "Continue"
+
+[node name="ButtonInviteFriends" type="Button" parent="VBoxContainer" unique_id=1258508497]
+layout_mode = 2
+text = "Invite Friends"
+
+[node name="ButtonSettings" type="Button" parent="VBoxContainer" unique_id=490255133]
+layout_mode = 2
+text = "Settings"
+
+[node name="ButtonQuit" type="Button" parent="VBoxContainer" unique_id=1775314877]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonInviteFriends" to="." method="_on_button_invite_friends_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

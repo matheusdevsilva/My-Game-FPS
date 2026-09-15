@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bmgm1imt2j0he"
+path="res://.godot/imported/4. Glacier.mp3-3cd38fa75314ef32993c70017851af82.mp3str"
+
+[deps]
+
+source_file="res://Scenes/vitrola/4. Glacier.mp3"
+dest_files=["res://.godot/imported/4. Glacier.mp3-3cd38fa75314ef32993c70017851af82.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://fkypeak01tvr"]
+
+[ext_resource type="Script" uid="uid://dcvt6m7o277tq" path="res://Scenes/MainMenu/Script/MainMenu.gd" id="1_cdkru"]
+
+[node name="MainMenu" type="Control" unique_id=1003825201]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdkru")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=141503412]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.065104164
+anchor_top = 0.74722224
+anchor_right = 0.15189584
+anchor_bottom = 0.84522223
+offset_right = -0.64001465
+offset_bottom = 0.15997314
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonSingle" type="Button" parent="VBoxContainer" unique_id=222809711]
+layout_mode = 2
+text = "Solo"
+
+[node name="ButtonMultiplayer" type="Button" parent="VBoxContainer" unique_id=1206552989]
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="ButtonSettings" type="Button" parent="VBoxContainer" unique_id=170243816]
+layout_mode = 2
+text = "Settings"
+
+[connection signal="pressed" from="VBoxContainer/ButtonSingle" to="." method="_on_button_single_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonMultiplayer" to="." method="_on_button_multiplayer_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
